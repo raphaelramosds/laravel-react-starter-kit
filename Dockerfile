@@ -1,4 +1,4 @@
-FROM php:8.3.20-fpm-alpine
+FROM php:8.3.20-fpm-alpine AS production
 
 ARG UID=1000
 ARG GID=1000
@@ -6,7 +6,7 @@ ARG GID=1000
 USER root
 
 # Install system dependencies
-RUN apk update && apk add curl libpng-dev oniguruma-dev libxml2-dev zip unzip shadow linux-headers
+RUN apk update && apk add curl libpng-dev oniguruma-dev libxml2-dev zip unzip shadow linux-headers npm
 
 # Set www-data user and group to match host UID/GID
 RUN groupmod -g ${GID} www-data && \
