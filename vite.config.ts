@@ -22,4 +22,13 @@ export default defineConfig({
             'ziggy-js': resolve(__dirname, 'vendor/tightenco/ziggy'),
         },
     },
+    server: {
+        // https://laratech.jp/posts/laravel-net::ERR_EMPTY_RESPONSE/en/
+        // Allows the server to be accessible even from Docker or remote environments.
+        host: true,
+        // Ensures that HMR communicates with the browser using the correct hostname.
+        hmr: {
+          host: "localhost",
+        },
+      }, 
 });
