@@ -8,6 +8,33 @@ Inertia allows you to build modern, single-page React applications using classic
 
 This React starter kit utilizes React 19, TypeScript, Tailwind, and the [shadcn/ui](https://ui.shadcn.com) and [radix-ui](https://www.radix-ui.com) component libraries.
 
+## How to run this crap
+
+Create env file and 
+
+```
+cp .env.example .env
+```
+
+Set the port where Laravel will serve the application
+
+```
+APP_PORT=8080
+```
+
+Build image and run the container
+
+```
+docker compose up --build
+```
+
+Start Vite server
+
+```
+docker exec app npm run dev
+```
+
+
 ## Official Documentation
 
 Documentation for all Laravel starter kits can be found on the [Laravel website](https://laravel.com/docs/starter-kits).
