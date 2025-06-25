@@ -28,13 +28,6 @@ Build image and run the container
 docker compose up --build
 ```
 
-Start Vite server
-
-```
-docker exec app npm run dev
-```
-
-
 ## Official Documentation
 
 Documentation for all Laravel starter kits can be found on the [Laravel website](https://laravel.com/docs/starter-kits).

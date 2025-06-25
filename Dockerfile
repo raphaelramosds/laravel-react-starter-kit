@@ -22,6 +22,18 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd sockets
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY . /var/www/html
 
+WORKDIR /var/www/html
+
+# Install composer dependencies
+RUN composer install --prefer-dist --no-cache
+
+# Run migrations
 RUN php artisan migrate
+
+# Generate application key
+RUN php artisan key:generate
+
+# Install node dependencies
+RUN npm install
 
 USER www-data
