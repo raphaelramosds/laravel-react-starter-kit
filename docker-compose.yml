@@ -3,15 +3,22 @@ version: "3.7"
 services:
 
   app:
-    container_name: app
     build:
       context: .
       dockerfile: Dockerfile
-    image: laravel-12.x:local
     restart: unless-stopped
     volumes:
       - .:/var/www/html
     ports:
       - "${APP_PORT}:80"
       - "5173:5173"
-    entrypoint: "/bin/sh -c 'php -S 0.0.0.0:80 -t public'"
+    entrypoint:
+        - /bin/sh
+        - -c
+        - |
+            composer install --prefer-dist --no-cache && \
+            php artisan migrate && \
+            php artisan key:generate && \
+            npm install && \
+            npm run dev && \
+            /bin/sh -c 'php -S 0.0.0.0:80 -t public'
