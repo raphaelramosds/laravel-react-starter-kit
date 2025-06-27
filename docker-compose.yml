@@ -21,4 +21,4 @@ services:
             php artisan key:generate && \
             npm install && \
             npm run dev && \
-            /bin/sh -c 'php -S 0.0.0.0:80 -t public'
+            php -S 0.0.0.0:80 -t public & npm run dev
